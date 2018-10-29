@@ -47,6 +47,33 @@ Header.prototype.mount = function () {
 
     if (typeof this.options.nav !== 'undefined') {
         let fragmento = document.createDocumentFragment();
+
+        let iptChk = document.createElement('input');
+        iptChk.setAttribute('id', 'menuOpen');
+        iptChk.setAttribute('type', 'checkbox');
+
+        let labelChk = document.createElement('label');
+        labelChk.setAttribute('class', 'label-menu');
+        labelChk.setAttribute('for', 'menuOpen');
+
+        let menuIcon = document.createElement('div');
+        menuIcon.setAttribute('class', 'menu__icon');
+
+        let menuStripe1 = document.createElement('div');
+        menuStripe1.setAttribute('class', 'menu__stripe');
+
+        let menuStripe2 = document.createElement('div');
+        menuStripe2.setAttribute('class', 'menu__stripe');
+
+        let menuStripe3 = document.createElement('div');
+        menuStripe3.setAttribute('class', 'menu__stripe');
+
+        menuIcon.appendChild(menuStripe1);
+        menuIcon.appendChild(menuStripe2);
+        menuIcon.appendChild(menuStripe3);
+
+        labelChk.appendChild(menuIcon);
+
         let nav = fragmento.appendChild(document.createElement("nav"));
 
         let items = this.options.nav;
@@ -58,11 +85,15 @@ Header.prototype.mount = function () {
                 document.createElement("li")
             );
             let a = document.createElement("a");
+            let href = element.toLowerCase().replace(/\s/g, "-");
+            a.setAttribute('href', href);
             a.textContent = element;
             itemNav.appendChild(a);
 
         }
 
+        this.el.appendChild(iptChk);
+        this.el.appendChild(labelChk);
         this.el.appendChild(nav);
     }
 

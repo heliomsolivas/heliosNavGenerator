@@ -25,3 +25,37 @@ li {
 .logo img {
   height: 80%;
 }
+input[type="checkbox"] {
+  display: none;
+}
+@media (max-width: 767px) {
+  .label-menu {
+    font-size: 0;
+    position: relative;
+    padding: 0;
+  }
+  nav {
+    transition: all 0.6s ease;
+    width: 300px;
+    -ms-transform: translateX(300px);
+    transform: translateX(300px);
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    background-color: #000;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+      0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+  }
+  input[type="checkbox"]:checked ~ nav {
+    transform: translateX(0);
+  }
+  .menu__stripe {
+    backface-visibility: hidden;
+    background-color: #fff;
+    height: 2px;
+    margin: 4px auto;
+    transition: all 0.3s;
+    width: 20px;
+  }
+}
